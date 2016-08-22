@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 	  end
 	end
 
-	def new 
+	def new
 		@event = Event.new
 	end
 
@@ -55,10 +55,10 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-  	params.require(:event).permit(:name, :description)
+  	params.require(:event).permit(:name, :description, :category_id)
 	end
 
-	def set_event 
+	def set_event
 		@event = Event.find(params[:id])
 	end
 
