@@ -1,0 +1,14 @@
+<h2><%= @event.name %>: Attendee List</h2>
+<ul>
+  <% @attendees.each do |attendee| %>
+    <li>
+      <%= attendee.name %>
+      <%= link_to 'Show', event_attendee_path(@event, attendee) %>
+      <%= link_to 'Delete', event_attendee_path(@event, attendee), :method => :delete, :data => { :confirm => "Are you sure?" } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Attendee', new_event_attendee_path(@event) %>
+
+<%= link_to 'Back to Event list', events_path %>

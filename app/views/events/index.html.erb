@@ -2,7 +2,8 @@
 	<% @events.each do |event| %>
   <li>
 	  <%= link_to event.name, event_path(event) %>
-	  <%= link_to " (JSON)", event_path(event, :format => :json) %>
+    <%= link_to 'Attendee List', event_attendees_path(event) %>
+    <%= link_to " (JSON)", event_path(event, :format => :json) %>
 	  <%= link_to 'Edit', edit_event_path(event) %>
 	  <%= link_to 'Delete', event_path(event), :method => :delete %>
   </li>
