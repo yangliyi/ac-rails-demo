@@ -1,4 +1,9 @@
 <h3><%= @event.name %></h3>
+<p>
+<% @event.groups.each do |g| %>
+  <%= g.name %>
+<% end %>
+</p>
 <div><%= @event.category_name %></div>
 <div><%= @event.description %></div>
 
