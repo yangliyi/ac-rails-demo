@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
     collection do
       get :latest
+      post :bulk_delete
     end
   end
 

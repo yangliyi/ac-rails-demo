@@ -15,6 +15,12 @@ class EventsController < ApplicationController
     @latest_events = Event.order("id DESC").limit(3)
   end
 
+  def bulk_delete
+    Event.destroy_all
+
+    redirect_to :back
+  end
+
 	def new
 		@event = Event.new
 	end
