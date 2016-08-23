@@ -11,6 +11,10 @@ class EventsController < ApplicationController
 	  end
 	end
 
+  def latest
+    @latest_events = Event.order("id DESC").limit(3)
+  end
+
 	def new
 		@event = Event.new
 	end
