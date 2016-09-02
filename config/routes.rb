@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :people
   resources :events do
     resources :attendees, :controller => "event_attendees"
