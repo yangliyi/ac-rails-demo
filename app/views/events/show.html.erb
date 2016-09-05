@@ -4,7 +4,10 @@
   <%= g.name %>
 <% end %>
 </p>
+
 <div><%= @event.category_name %></div>
 <div><%= @event.description %></div>
+<div><%= image_tag @event.logo.url(:medium) %></div>
+
 
 <div><%= link_to 'Back to index', events_path %></div>

@@ -19,5 +19,11 @@
 <%#= f.select :category_id, Category.all.map{ |c| [c.name, c.id] } %>
 <%= f.collection_select(:category_id, Category.all, :id, :name, :include_blank => "Please select") %>
 
+<%= f.file_field :logo %>
+
+<% if @event.logo.exists? %>
+  <%= check_box_tag "remove_upload_file", "1" %>移除上傳檔案
+<% end %>
+
 <%= f.label :description, "Description" %>
 <%= f.text_area :description %>

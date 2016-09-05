@@ -48,6 +48,10 @@ class EventsController < ApplicationController
 	end
 
 	def update
+    if params[:remove_upload_file] == "1"
+      @event.logo = nil
+    end
+
   	if @event.update(event_params)
   		flash[:notice] = "event was successfully updated"
     	redirect_to event_path(@event)
@@ -66,7 +70,7 @@ class EventsController < ApplicationController
 	private
 
 	def event_params
-  	params.require(:event).permit(:name, :description, :category_id, :group_ids => [])
+  	params.require(:event).permit(:name, :description, :category_id, :logo, :group_ids => [])
 	end
 
 	def set_event
