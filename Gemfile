@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem "kaminari"
 
 gem 'devise'
+gem 'omniauth-facebook'
 
 gem "paperclip"
 

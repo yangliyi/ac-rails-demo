@@ -15,6 +15,7 @@
     <% else %>
       <%= link_to('Sign Up', new_registration_path(:user)) %> |
       <%= link_to('Log In', new_session_path(:user)) %>
+      <%= link_to "Login with Facebook", user_facebook_omniauth_authorize_path %>
     <% end %>
   	<p style="color: green"><%= flash[:notice] %></p>
 		<p style="color: red"><%= flash[:alert] %></p>
