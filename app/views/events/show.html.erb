@@ -1,4 +1,11 @@
 <h3><%= @event.name %></h3>
+<div id="like">
+  <% if current_user.liked_event?(@event) %>
+    <%= button_to "Unlike", like_event_path(@event), :remote => true %>
+  <% else %>
+    <%= button_to "Like", like_event_path(@event), :remote => true %>
+  <% end %>
+</div>
 <p>
 <% @event.groups.each do |g| %>
   <%= g.name %>

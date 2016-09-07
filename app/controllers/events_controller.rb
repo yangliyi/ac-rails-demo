@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
 
-	before_action :set_event, :only => [ :show, :edit, :update, :destroy]
+	before_action :set_event, :only => [ :show, :edit, :update, :destroy, :like]
 
 	def index
 	  @events = Event.page(params[:page]).per(5)
@@ -38,7 +38,7 @@ class EventsController < ApplicationController
 
 	def show
   	@page_title = @event.name
-  	 respond_to do |format|
+  	respond_to do |format|
 	    format.html { @page_title = @event.name } # show.html.erb
 	    format.json { render :json => { id: @event.id, name: @event.name }.to_json }
 	  end
@@ -71,6 +71,19 @@ class EventsController < ApplicationController
     end
 
 	end
+
+  def like
+    @event = Event.find(params[:id])
+    if current_user.liked_event?(@event)
+      current_user.liked_events.delete(@event)
+    else
+      current_user.liked_events << @event
+    end
+    respond_to do |format|
+      format.html {redirect_to event_path(@event)}
+      format.js
+    end
+  end
 
 	private
 

@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+  has_many :likes, :dependent => :destroy
+  has_many :liked_events, :through => :likes, :source => :event
+
   def self.from_omniauth(auth)
     # Case 1: Find existing user by facebook uid
     user = User.find_by_fb_uid( auth.uid )
@@ -34,5 +37,9 @@ class User < ApplicationRecord
     #user.fb_raw_data = auth
     user.save!
     return user
+  end
+
+  def liked_event?(event)
+    self.liked_events.include?(event)
   end
 end

@@ -8,6 +8,9 @@ class Event < ApplicationRecord
   belongs_to :category, optional: true
   delegate :name, :to => :category, :prefix => true, :allow_nil => true
 
+  has_many :likes, :dependent => :destroy
+  has_many :like_users, :through => :likes, :class_name => "User"
+
   has_attached_file :logo, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
   validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
 

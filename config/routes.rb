@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       get :latest
       post :bulk_delete
     end
+
+    member do
+      post :like
+    end
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

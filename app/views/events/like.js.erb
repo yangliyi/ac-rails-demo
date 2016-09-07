@@ -1,0 +1,6 @@
+<% if current_user.liked_event?(@event) %>
+  <% value = "Unlike" %>
+<% else %>
+  <% value = "Like" %>
+<% end %>
+$("input[type=submit]").val("<%= value %>")
