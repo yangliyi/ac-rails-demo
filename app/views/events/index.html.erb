@@ -1,12 +1,12 @@
 <p><%= link_to 'Latest Events', latest_events_path %></p>
 <ul>
 	<% @events.each do |event| %>
-  <li>
+  <li id="event-<%= event.id %>">
 	  <%= link_to event.name, event_path(event) %>
     <%= link_to 'Attendee List', event_attendees_path(event) %>
     <%= link_to " (JSON)", event_path(event, :format => :json) %>
 	  <%= link_to 'Edit', edit_event_path(event) %>
-	  <%= link_to 'Delete', event_path(event), :method => :delete %>
+	  <%= link_to 'Delete', event_path(event), :method => :delete, :remote => true %>
   </li>
 	<% end %>
 </ul>
